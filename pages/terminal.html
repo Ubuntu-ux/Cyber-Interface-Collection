@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/terminal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="terminal-mode">
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">SYSTEM_TERMINAL_v2.0</div>
+            <div class="terminal-controls">
+                <span class="control minimize">_</span>
+                <span class="control maximize">□</span>
+                <span class="control close">×</span>
+            </div>
+        </div>
+
+        <div class="terminal-window">
+            <div class="terminal-output"></div>
+            <div class="terminal-input-line">
+                <span class="prompt">visitor@system:~$</span>
+                <input type="text" class="terminal-input" autofocus>
+            </div>
+        </div>
+
+        <div class="terminal-status-bar">
+            <div class="status-item">STATUS: ACTIVE</div>
+            <div class="status-item">UPTIME: <span class="uptime">00:00:00</span></div>
+            <div class="status-item">MEMORY: <span class="memory-usage">0%</span></div>
+        </div>
+    </div>
+
+    <div class="scanline"></div>
+    <div class="terminal-overlay"></div>
+
+    <script src="../js/terminal.js"></script>
+</body>
+</html> 

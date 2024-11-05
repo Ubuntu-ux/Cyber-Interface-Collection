@@ -1,0 +1,193 @@
+:root {
+    --terminal-bg: #000000;
+    --terminal-text: #00ff00;
+    --terminal-prompt: #00ff00;
+    --terminal-header: #001100;
+    --terminal-border: #00ff00;
+}
+
+.terminal-mode {
+    background: var(--terminal-bg);
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--terminal-text);
+    overflow: hidden;
+}
+
+.terminal-container {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--terminal-border);
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 17, 0, 0.9);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    position: relative;
+}
+
+.terminal-header {
+    background: var(--terminal-header);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--terminal-border);
+}
+
+.terminal-title {
+    color: var(--terminal-text);
+    font-size: 14px;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--terminal-border);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.control:hover {
+    background: var(--terminal-text);
+    color: var(--terminal-bg);
+}
+
+.terminal-window {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.terminal-output {
+    margin-bottom: 10px;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: var(--terminal-prompt);
+    margin-right: 10px;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: var(--terminal-text);
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    outline: none;
+}
+
+.terminal-status-bar {
+    padding: 5px 10px;
+    border-top: 1px solid var(--terminal-border);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.status-item {
+    padding: 0 10px;
+}
+
+.scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(0, 255, 0, 0.1) 10%,
+        rgba(0, 255, 0, 0.2) 50%,
+        rgba(0, 255, 0, 0.1) 90%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: scanline 6s linear infinite;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+.terminal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 255, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--terminal-text);
+}
+
+/* Анимация мигающего курсора */
+.terminal-input-line::after {
+    content: '█';
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Эффекты для текста */
+.error {
+    color: #ff0000;
+}
+
+.success {
+    color: #00ff00;
+}
+
+.warning {
+    color: #ffff00;
+}
+
+.info {
+    color: #00ffff;
+} 

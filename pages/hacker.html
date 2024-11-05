@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Mode</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/hacker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="hacker-mode">
+    <div class="hacker-container">
+        <!-- Верхняя панель -->
+        <div class="top-bar">
+            <div class="status">STATUS: CONNECTED</div>
+            <div class="ip-address">IP: 192.168.1.1</div>
+            <div class="connection">SECURE_CHANNEL: ACTIVE</div>
+        </div>
+
+        <!-- Основной интерфейс -->
+        <div class="main-interface">
+            <!-- Левая панель с кодом -->
+            <div class="code-panel">
+                <div class="panel-header">
+                    SOURCE_CODE
+                    <div class="controls">
+                        <span class="minimize">_</span>
+                        <span class="maximize">□</span>
+                        <span class="close">×</span>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre class="code-text"></pre>
+                </div>
+            </div>
+
+            <!-- Центральная панель с терминалом -->
+            <div class="terminal-panel">
+                <div class="panel-header">
+                    TERMINAL_ACCESS
+                    <div class="controls">
+                        <span class="minimize">_</span>
+                        <span class="maximize">□</span>
+                        <span class="close">×</span>
+                    </div>
+                </div>
+                <div class="terminal-content">
+                    <div class="output"></div>
+                    <div class="input-line">
+                        <span class="prompt">root@system:~#</span>
+                        <input type="text" class="terminal-input" autofocus>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая панель с данными -->
+            <div class="data-panel">
+                <div class="panel-header">
+                    SYSTEM_INFO
+                    <div class="controls">
+                        <span class="minimize">_</span>
+                        <span class="maximize">□</span>
+                        <span class="close">×</span>
+                    </div>
+                </div>
+                <div class="data-content">
+                    <div class="system-stats">
+                        <div class="stat">
+                            <span class="stat-label">CPU:</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="cpuBar"></div>
+                            </div>
+                            <span class="stat-value" id="cpuValue">0%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">RAM:</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="ramBar"></div>
+                            </div>
+                            <span class="stat-value" id="ramValue">0%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">NETWORK:</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="netBar"></div>
+                            </div>
+                            <span class="stat-value" id="netValue">0 KB/s</span>
+                        </div>
+                    </div>
+                    <div class="system-log">
+                        <div class="log-header">SYSTEM_LOG</div>
+                        <div class="log-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя панель -->
+        <div class="bottom-bar">
+            <a href="../index.html" class="back-link">RETURN_TO_MAIN</a>
+            <div class="time">00:00:00</div>
+            <div class="date">01.01.2024</div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+    <script src="../js/hacker.js"></script>
+</body>
+</html> 

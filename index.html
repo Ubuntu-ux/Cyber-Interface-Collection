@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub but Cooler</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="matrix-rain"></div>
+
+    <header class="cyber-header">
+        <div class="logo">GitHub_Cooler</div>
+        <div class="search-box">
+            <input type="text" placeholder="Search repositories...">
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="cyber-cards">
+            <div class="cyber-card" data-tilt>
+                <div class="card-content">
+                    <div class="card-glitch"></div>
+                    <h3>PROJECTS_</h3>
+                    <p>Active repositories: 42</p>
+                    <div class="card-scanner"></div>
+                </div>
+            </div>
+
+            <div class="cyber-card" data-tilt>
+                <div class="card-content">
+                    <div class="card-glitch"></div>
+                    <h3>STATS_</h3>
+                    <p>Commits today: 137</p>
+                    <div class="card-scanner"></div>
+                </div>
+            </div>
+
+            <div class="cyber-card" data-tilt>
+                <div class="card-content">
+                    <div class="card-glitch"></div>
+                    <h3>ACTIVITY_</h3>
+                    <p>Level: Maximum</p>
+                    <div class="card-scanner"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-feed">
+            <h3>Recent Activity</h3>
+            <div class="activity-item">
+                <span class="time">2h ago</span>
+                <span class="action">New Pull Request</span>
+            </div>
+        </div>
+    </main>
+
+    <button id="secretBtn" class="secret-btn">TEST SECRETS</button>
+
+    <div id="secretModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Secret Pages</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-links">
+                <a href="pages/404.html" class="modal-link">404 Error</a>
+                <a href="pages/hacker.html" class="modal-link">Hacker Mode</a>
+                <a href="pages/matrix.html" class="modal-link">Matrix</a>
+                <a href="pages/terminal.html" class="modal-link">Terminal</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+    <script src="js/tilt.js"></script>
+</body>
+</html> 

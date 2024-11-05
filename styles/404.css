@@ -1,0 +1,377 @@
+.error-page {
+    background: var(--bg-dark);
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glitch-container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.glitch {
+    font-size: 8rem;
+    font-weight: bold;
+    color: var(--primary);
+    position: relative;
+    text-shadow: 0.05em 0 0 var(--secondary),
+                -0.05em -0.025em 0 #ff0000;
+    animation: glitch 500ms infinite;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff0000;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00ff00;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim2 2.5s infinite linear alternate-reverse;
+}
+
+.error-subtitle {
+    color: var(--primary);
+    font-size: 2rem;
+    margin: 1rem 0 2rem;
+    text-shadow: 0 0 5px var(--primary);
+}
+
+.error-terminal {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--primary);
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: left;
+}
+
+.terminal-text {
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+.terminal-text::after {
+    content: '█';
+    animation: blink 1s infinite;
+}
+
+.error-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    color: var(--primary);
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+}
+
+.back-button span {
+    position: absolute;
+    display: block;
+}
+
+.back-button span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary));
+    animation: btn-anim1 1s linear infinite;
+}
+
+.back-button span:nth-child(2) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, var(--primary));
+    animation: btn-anim2 1s linear infinite;
+}
+
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgE1xQAAAABh0Uk5TzD7qPcYx/jD5L/Uq8CXrIOAb2xbQEYn7dJUAAAJySURBVDjLhVK9SyNBFJ/VrEQSrbbYxFhZGMQyB4J/gEWEa7xqk0vhVTZVqmCTwgPLg8Vm7QQNKMI1dhYWZxkispVVTG9xoE0KDUcuuyRNks2bN/N5M+NdDn/vzZv3ee/3mwHgv6ToY/7wFb0NP/qqjlZE94VxzU4uAWKzOx+hJ1EpkwQBYrOlGBHqP3qrHCCFrUUEF5VYXkRQzyrFKmYBz4q0qXYJQM4KBZqAvENFlMKGBWhpZRN5hDyhX5yQM0kA2b6QD4hkD5e4wUGYX/rJ3yG+2EDtpHDsZYNy40FuQO5QvR+kKMVLAYg7OpYGXXp5C1HYzQbFaV4RCDZ0LCNQxWkemgvVVjKheJ1AMCEHqXhDILhWHPkHijcEcqk48mOK0wSyJbkyt6A4TSCniiOPKd4RyKHkSk0pviOQfcmVmlK8J5BsJVxpXvGeQNYr4UpzivMEslIJV5pTnCeQpUq40qziHYFkwpXmFe8IJBWuNK/4QCAbGtbhVvGBQNY1rMOt4gOBrGlYh1vFOYEsakSDW8U5gSxoRINbxTmBzGtEg1vFeQLJaESDW8V5AklrRINbxUcCSWlEg1vFRwJZ1IgGd4qPBLKgEQ3uFB8JZF4jGtwpPhFIUiMa3Ck+EUhCIxrcKT4RSL+GdLhRfCKQPg3pcKP4h0B6NaTDjeIfAunRkA5X+YpA4hrS4SpfEUiXhnS4ylcE0qkhHa7yFYG0a0iHq3xFIG0a0uEqXxNIi4Z0uMrXBNKsIR2u8jWBxDSkw1X+JJBGDelwlT8JpEFDOlzlGwKp05AOV/mGQGo1pMNVviGQGg3p+Cf5C5HoVXoLpxLxAAAAAElFTkSuQmCC");
+    opacity: 0.1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0) 50%,
+        rgba(0,0,0,0.2) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 var(--secondary),
+                    -0.05em -0.025em 0 #ff0000;
+    }
+    14% {
+        text-shadow: 0.05em 0 0 var(--secondary),
+                    -0.05em -0.025em 0 #ff0000;
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 var(--secondary),
+                    0.025em 0.025em 0 #ff0000;
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 var(--secondary),
+                    0.025em 0.025em 0 #ff0000;
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 var(--secondary),
+                    0.05em 0 0 #ff0000;
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 var(--secondary),
+                    0.05em 0 0 #ff0000;
+    }
+    100% {
+        text-shadow: -0.025em 0 0 var(--secondary),
+                    -0.025em -0.025em 0 #ff0000;
+    }
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(15px, 550px, 53px, 0);
+    }
+    20% {
+        clip: rect(41px, 550px, 169px, 0);
+    }
+    40% {
+        clip: rect(20px, 550px, 30px, 0);
+    }
+    60% {
+        clip: rect(73px, 550px, 76px, 0);
+    }
+    80% {
+        clip: rect(86px, 550px, 134px, 0);
+    }
+    100% {
+        clip: rect(56px, 550px, 98px, 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(21px, 550px, 73px, 0);
+    }
+    20% {
+        clip: rect(25px, 550px, 138px, 0);
+    }
+    40% {
+        clip: rect(54px, 550px, 120px, 0);
+    }
+    60% {
+        clip: rect(64px, 550px, 115px, 0);
+    }
+    80% {
+        clip: rect(76px, 550px, 164px, 0);
+    }
+    100% {
+        clip: rect(27px, 550px, 182px, 0);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes btn-anim1 {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+@keyframes btn-anim2 {
+    0% { right: -100%; }
+    50%, 100% { right: 100%; }
+}
+
+/* Добавляем VHS эффекты */
+.error-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    ),
+    linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.06)
+    );
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    animation: vhsEffect 2s infinite linear;
+    z-index: 2;
+}
+
+/* Эффект смещения RGB */
+.glitch {
+    position: relative;
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    animation: rgbShift 2s infinite linear;
+}
+
+/* Эффект искажения видео */
+.error-page::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1),
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    animation: videoNoise 0.5s infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Добавляем блики и искажения */
+.vhs-flicker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: 4;
+    animation: vhsFlicker 0.2s infinite;
+}
+
+/* Анимации для VHS эффектов */
+@keyframes vhsEffect {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -100%; }
+}
+
+@keyframes rgbShift {
+    0% {
+        text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    50% {
+        text-shadow: -0.05em 0 0 rgba(255, 0, 0, 0.75),
+                    0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                    -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    100% {
+        text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+}
+
+@keyframes videoNoise {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-1%); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(1%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes vhsFlicker {
+    0% { opacity: 0.95; }
+    50% { opacity: 1; }
+    100% { opacity: 0.95; }
+}
+
+/* Добавляем эффект искривления экрана */
+.error-page {
+    position: relative;
+    overflow: hidden;
+}
+
+.error-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    animation: screenCurve 8s infinite linear;
+}
+
+@keyframes screenCurve {
+    0% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+} 

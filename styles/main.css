@@ -1,0 +1,298 @@
+:root {
+    --primary: #00ff00;
+    --secondary: #ff00ff;
+    --bg-dark: #0a0a0a;
+    --text-light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+}
+
+/* Хедер */
+.cyber-header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--primary);
+}
+
+.logo {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.search-box input {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+}
+
+/* Основной контент */
+.main-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0, 255, 0, 0.1) 50%,
+        transparent 100%
+    );
+    animation: backgroundRotate 20s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes backgroundRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.repo-card {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--primary);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Кнопка секретов */
+.secret-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.secret-btn:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-dark);
+    border: 2px solid var(--primary);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close-btn {
+    color: var(--primary);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.modal-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.modal-link {
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    color: var(--primary);
+    text-decoration: none;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.modal-link:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+}
+
+/* Добавить новые стили */
+.cyber-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.cyber-card {
+    position: relative;
+    height: 200px;
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid var(--primary);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: all 0.3s ease;
+}
+
+.card-content {
+    position: relative;
+    padding: 1.5rem;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: 1;
+}
+
+.card-content h3 {
+    transform: translateZ(30px);
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.card-content p {
+    transform: translateZ(20px);
+    color: var(--text-light);
+}
+
+.card-glitch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(0, 255, 0, 0.2) 50%,
+        transparent 100%
+    );
+    transform: translateZ(10px);
+    animation: cardGlitch 3s infinite linear;
+}
+
+.card-scanner {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    filter: blur(1px);
+    transform: translateZ(15px);
+    animation: cardScan 3s infinite linear;
+}
+
+/* Добавляем неоновое свечение при наведении */
+.cyber-card:hover {
+    box-shadow: 0 0 15px var(--primary),
+                0 0 30px var(--primary),
+                0 0 45px var(--primary);
+}
+
+.cyber-card::before,
+.cyber-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,
+        transparent,
+        rgba(0, 255, 0, 0.1),
+        transparent
+    );
+    transform: translateZ(5px);
+}
+
+.cyber-card::after {
+    transform: translateZ(-5px);
+}
+
+@keyframes cardGlitch {
+    0% {
+        opacity: 0.5;
+        transform: translateZ(10px) skew(0deg);
+    }
+    50% {
+        opacity: 0.2;
+        transform: translateZ(10px) skew(2deg);
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateZ(10px) skew(0deg);
+    }
+}
+
+@keyframes cardScan {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* Добавляем эффект параллакса для фона */
+.main-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0, 255, 0, 0.1) 50%,
+        transparent 100%
+    );
+    animation: backgroundRotate 20s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes backgroundRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

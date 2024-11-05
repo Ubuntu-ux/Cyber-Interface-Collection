@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Mode</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/matrix.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="matrix-mode">
+    <canvas id="matrixCanvas"></canvas>
+    
+    <div class="matrix-overlay">
+        <div class="glitch-text" data-text="SYSTEM_OVERRIDE">SYSTEM_OVERRIDE</div>
+        
+        <div class="matrix-content">
+            <div class="status-panel">
+                <div class="status-item">
+                    <span class="label">STATUS:</span>
+                    <span class="value" id="statusValue">CONNECTED</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">DEPTH:</span>
+                    <span class="value" id="depthValue">LEVEL_1</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">SIGNAL:</span>
+                    <span class="value" id="signalValue">87%</span>
+                </div>
+            </div>
+
+            <div class="matrix-message">
+                Wake up, Neo...<br>
+                The Matrix has you...
+            </div>
+
+            <div class="choice-pills">
+                <div class="pill red-pill" onclick="choosePill('red')">
+                    КРАСНАЯ ТАБЛЕТКА
+                </div>
+                <div class="pill blue-pill" onclick="choosePill('blue')">
+                    СИНЯЯ ТАБЛЕТКА
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="../index.html" class="exit-button">EXIT_MATRIX</a>
+
+    <script src="../js/matrix.js"></script>
+</body>
+</html> 
